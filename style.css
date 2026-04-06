@@ -1,0 +1,237 @@
+:root {
+    --bg-dark: #222;
+    --accent: #f17d3b; /* Тот самый оранжевый */
+    --text-light: #fff;
+    --card-bg: #fff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 1px solid #444;
+}
+
+.brand-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.brand-btn {
+    padding: 10px 25px;
+    border: 2px solid var(--accent);
+    background: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.brand-btn.active, .brand-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.collection-title {
+    margin: 40px 0 20px;
+    font-size: 24px;
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.color-card {
+    background: var(--card-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.color-card:hover {
+    transform: translateY(-5px);
+}
+
+.color-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.color-card p {
+    color: #333;
+    font-size: 13px;
+    text-align: center;
+    padding: 10px 5px;
+    margin: 0;
+    font-weight: 500;
+}
+.modal {
+    display: none; /* По умолчанию скрыто */
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    cursor: zoom-out;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 80vh;
+    border: 3px solid white;
+    border-radius: 4px;
+}
+
+#modal-caption {
+    color: white;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 15px; right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* Делаем body во весь экран */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Растягиваем основной контент, чтобы он занял всё место, отодвинув футер вниз */
+main {
+    flex: 1 0 auto;
+}
+
+/* Стили самого футера */
+.main-footer {
+    flex-shrink: 0;
+    background-color: #222222; /* Темно-серый как на скриншоте */
+    color: #ffffff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Стили ссылок и иконок */
+.footer-social a img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.footer-contacts {
+    text-align: left;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.contact-item .icon {
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.contact-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-social {
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 768px) {
+    .color-grid {
+        display: grid;
+        /* Создаем две колонки равной ширины */
+        grid-template-columns: repeat(2, 1fr); 
+        /* Уменьшаем отступы между карточками, чтобы они влезли по ширине */
+        gap: 10px; 
+        padding: 10px;
+    }
+
+    /* Немного уменьшим шрифт в карточках для экономии места */
+    .color-card p {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    /* Убедимся, что картинки не вылезают за пределы */
+    .color-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #333333; /* Цвет линии (подбери под цвет верхней полосы) */
+    margin: 0; /* Чтобы не было лишних зазоров */
+    opacity: 0.5; /* Если линия кажется слишком яркой, можно приглушить */
+}
+
+/* Настраиваем отступы в футере, чтобы он не прилипал к линии слишком плотно */
+.main-footer {
+    border-top: none; /* Убедись, что у самого футера нет своей границы */
+    padding-top: 50px; 
+}
