@@ -1,12 +1,12 @@
 const filterContainer = document.getElementById('brand-filters');
 const renderContainer = document.getElementById('palette-render');
 
-// 1. Инициализация кнопок брендов
+
 function initFilters() {
     colorsData.forEach((data, index) => {
         const btn = document.createElement('button');
         btn.classList.add('brand-btn');
-        if (index === 0) btn.classList.add('active'); // Первый бренд активен сразу
+        if (index === 0) btn.classList.add('active'); 
         btn.innerText = data.brand;
         btn.onclick = () => {
             document.querySelectorAll('.brand-btn').forEach(b => b.classList.remove('active'));
@@ -17,7 +17,7 @@ function initFilters() {
     });
 }
 
-// 2. Отрисовка палитры
+
 function renderPalette(brandName) {
   renderContainer.innerHTML = '';
     const selectedBrand = colorsData.find(b => b.brand === brandName);
@@ -32,25 +32,25 @@ function renderPalette(brandName) {
         grid.classList.add('color-grid');
 
         col.items.forEach(item => {
-            // 1. Делаем имя для подписи: убираем .png/.jpg и дефисы
+            
             const cleanName = item.split('.')[0].replaceAll("-", " ");
             
-            // 2. Собираем путь к файлу
+         
             let imgPath = "";
             if (selectedBrand.brand === "Grandex") {
-                imgPath = `img/Grandex/${item}.jpg`; // Grandex у нас без расширений в массиве
+                imgPath = `img/Grandex/${item}.jpg`; 
             } else if (selectedBrand.brand === "Hanex") {
                 imgPath = `img/Hanex/${item}`;
             } else if (selectedBrand.brand === "Staron") {
                 imgPath = `img/Staron/${item}`;
                 } else if (selectedBrand.brand === "Durasein") {
-                  // Для Durasein просто берем имя из массива
+           
                   imgPath = `img/Durasein/${item}`;
                   } else if (selectedBrand.brand === "Neomarm") {
                    imgPath = `img/Neomarm/${item}`;
                    
                    } else if (selectedBrand.brand === "Pluton") {
-                   // Добавляем префикс Pluton- к имени файла
+             
                    imgPath = `img/Pluton/Pluton-${item}`;
                     }
             
@@ -79,6 +79,25 @@ function openModal(imgSrc, title) {
     caption.innerText = title;
 }
 
-// Запуск
+const scrollBtn = document.getElementById("scrollToTop");
+
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+};
+
+
+scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" 
+    });
+});
+
+
 initFilters();
 renderPalette(colorsData[0].brand);
