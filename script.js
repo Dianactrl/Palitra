@@ -38,7 +38,7 @@ function renderPalette(brandName) {
          
             let imgPath = "";
             if (selectedBrand.brand === "Grandex") {
-                imgPath = `img/Grandex/${item}.jpg`; 
+                imgPath = `img/Grandex/${item}`; 
             } else if (selectedBrand.brand === "Hanex") {
                 imgPath = `img/Hanex/${item}`;
             } else if (selectedBrand.brand === "Staron") {
