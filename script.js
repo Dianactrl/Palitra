@@ -53,6 +53,7 @@ function renderPalette(brandName) {
              
                    imgPath = `img/Pluton/Pluton-${item}`;
                     }
+                   
             
             
 
